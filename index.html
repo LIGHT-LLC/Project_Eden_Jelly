@@ -1,0 +1,990 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EDEN JELLY - Premium Vaseline Products | Proudly Rwanda 🇷🇼</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #2c3e50;
+            overflow-x: hidden;
+            background: linear-gradient(180deg, #e0f7ff 0%, #ffffff 50%, #fff8e1 100%);
+        }
+
+        .bubbles {
+            position: fixed;
+            width: 100%;
+            height: 100vh;
+            overflow: hidden;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .bubble {
+            position: absolute;
+            bottom: -100px;
+            background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.8), rgba(99, 179, 237, 0.3));
+            border-radius: 50%;
+            opacity: 0.6;
+            animation: rise 15s infinite ease-in;
+        }
+
+        .bubble:nth-child(1) { width: 80px; height: 80px; left: 10%; animation-duration: 12s; }
+        .bubble:nth-child(2) { width: 60px; height: 60px; left: 20%; animation-duration: 14s; animation-delay: 2s; }
+        .bubble:nth-child(3) { width: 100px; height: 100px; left: 35%; animation-duration: 16s; animation-delay: 4s; }
+        .bubble:nth-child(4) { width: 70px; height: 70px; left: 50%; animation-duration: 13s; animation-delay: 1s; }
+        .bubble:nth-child(5) { width: 90px; height: 90px; left: 65%; animation-duration: 15s; animation-delay: 3s; }
+
+        @keyframes rise {
+            0% {
+                bottom: -100px;
+                transform: translateX(0) scale(1);
+                opacity: 0.6;
+            }
+            50% {
+                transform: translateX(100px) scale(1.1);
+                opacity: 0.4;
+            }
+            100% {
+                bottom: 110vh;
+                transform: translateX(-50px) scale(0.8);
+                opacity: 0;
+            }
+        }
+
+        .droplets {
+            position: fixed;
+            width: 100%;
+            height: 100vh;
+            overflow: hidden;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .droplet {
+            position: absolute;
+            background: radial-gradient(circle at 40% 40%, rgba(255, 223, 186, 0.9), rgba(255, 193, 7, 0.4));
+            border-radius: 50% 50% 50% 70%;
+            opacity: 0.5;
+            animation: float 20s infinite ease-in-out;
+            filter: blur(1px);
+        }
+
+        .droplet:nth-child(1) { width: 40px; height: 50px; top: 20%; left: 15%; animation-duration: 18s; }
+        .droplet:nth-child(2) { width: 30px; height: 40px; top: 40%; left: 75%; animation-duration: 22s; animation-delay: 3s; }
+        .droplet:nth-child(3) { width: 50px; height: 60px; top: 60%; left: 25%; animation-duration: 20s; animation-delay: 5s; }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0) translateX(0) rotate(0deg);
+            }
+            25% {
+                transform: translateY(-50px) translateX(30px) rotate(90deg);
+            }
+            50% {
+                transform: translateY(-100px) translateX(-30px) rotate(180deg);
+            }
+            75% {
+                transform: translateY(-50px) translateX(30px) rotate(270deg);
+            }
+        }
+
+        header {
+            background: linear-gradient(135deg, rgba(0, 188, 212, 0.95) 0%, rgba(3, 169, 244, 0.95) 100%);
+            backdrop-filter: blur(20px);
+            color: white;
+            padding: 1.2rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 5px 30px rgba(0, 188, 212, 0.3);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .logo {
+            font-size: 2.2rem;
+            font-weight: 900;
+            letter-spacing: 3px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2.5rem;
+        }
+
+        .nav-link {
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s;
+            position: relative;
+            padding: 0.5rem 1rem;
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        .nav-link::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #ffeb3b, #ffc107);
+            transition: width 0.3s;
+            border-radius: 10px;
+        }
+
+        .nav-link:hover::before,
+        .nav-link.active::before {
+            width: 80%;
+        }
+
+        main {
+            margin-top: 70px;
+            position: relative;
+            z-index: 1;
+        }
+
+        section {
+            min-height: 100vh;
+            padding: 5rem 2rem;
+            position: relative;
+        }
+
+        .hero {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background: linear-gradient(135deg, #00bcd4 0%, #03a9f4 50%, #0288d1 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            color: white;
+            max-width: 1000px;
+        }
+
+        .hero h1 {
+            font-size: 5rem;
+            margin-bottom: 1rem;
+            letter-spacing: 6px;
+            font-weight: 900;
+            text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        .rwanda-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #ffd700, #ffed4e);
+            color: #0288d1;
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            font-size: 1.4rem;
+            font-weight: 800;
+            margin-bottom: 2rem;
+            box-shadow: 0 5px 20px rgba(255, 215, 0, 0.4);
+            border: 3px solid white;
+        }
+
+        .hero p {
+            font-size: 1.6rem;
+            margin-bottom: 3rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+            font-weight: 500;
+        }
+
+        .hero-features {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            font-size: 1.3rem;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.25), rgba(255, 255, 255, 0.1));
+            padding: 1.2rem 2rem;
+            border-radius: 50px;
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            transition: all 0.3s;
+            font-weight: 600;
+        }
+
+        .feature-item:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 10px 30px rgba(255, 235, 59, 0.4);
+        }
+
+        .feature-icon {
+            font-size: 2rem;
+        }
+
+        .products {
+            background: linear-gradient(180deg, #e0f7ff 0%, #fff8e1 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-header h2 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #00bcd4, #0288d1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 900;
+        }
+
+        .section-subtitle {
+            font-size: 1.4rem;
+            color: #546e7a;
+            font-weight: 500;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            max-width: 1200px;
+            margin: 0 auto 5rem;
+            width: 100%;
+        }
+
+        .product-card {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(224, 247, 255, 0.9));
+            padding: 3rem 2rem;
+            border-radius: 30px;
+            box-shadow: 0 10px 40px rgba(0, 188, 212, 0.2);
+            transition: all 0.4s;
+            text-align: center;
+            border: 3px solid transparent;
+        }
+
+        .product-card:hover {
+            transform: translateY(-15px) scale(1.03);
+            box-shadow: 0 20px 60px rgba(0, 188, 212, 0.4);
+            border-color: rgba(255, 193, 7, 0.5);
+        }
+
+        .product-icon {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .product-card h3 {
+            background: linear-gradient(135deg, #00bcd4, #0288d1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            font-weight: 800;
+        }
+
+        .product-card p {
+            color: #546e7a;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+            font-size: 1.05rem;
+        }
+
+        .product-benefits {
+            display: flex;
+            flex-direction: column;
+            gap: 0.6rem;
+        }
+
+        .product-benefits span {
+            color: #00bcd4;
+            font-size: 1rem;
+            font-weight: 700;
+        }
+
+        .gallery-section {
+            margin-top: 4rem;
+            padding-top: 3rem;
+            border-top: 3px solid rgba(0, 188, 212, 0.2);
+        }
+
+        .gallery-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .gallery-slider {
+            position: relative;
+            overflow: hidden;
+            border-radius: 30px;
+            box-shadow: 0 20px 60px rgba(0, 188, 212, 0.3);
+            background: white;
+            padding: 0rem;
+        }
+
+        .gallery-track {
+            display: flex;
+            transition: transform 0.6s ease;
+        }
+
+        .gallery-slide {
+            min-width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .gallery-image-wrapper {
+            width: 100%;
+            max-width: 700px;
+            aspect-ratio: 4/3;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 15px 40px rgba(0, 188, 212, 0.2);
+            background: linear-gradient(135deg, #e1f5fe, #fff9c4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: #00bcd4;
+            font-weight: 800;
+        }
+
+        .gallery-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            padding: 0 1rem;
+            pointer-events: none;
+        }
+
+        .gallery-arrow {
+            pointer-events: all;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #00bcd4, #03a9f4);
+            border: 3px solid white;
+            color: white;
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 5px 20px rgba(0, 188, 212, 0.4);
+        }
+
+        .gallery-arrow:hover {
+            transform: scale(1.15);
+            background: linear-gradient(135deg, #0288d1, #01579b);
+        }
+
+        .gallery-dots {
+            display: flex;
+            justify-content: center;
+            gap: 0.8rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .gallery-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(0, 188, 212, 0.3);
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .gallery-dot:hover {
+            background: rgba(0, 188, 212, 0.6);
+            transform: scale(1.2);
+        }
+
+        .gallery-dot.active {
+            background: linear-gradient(135deg, #00bcd4, #0288d1);
+            width: 35px;
+            border-radius: 10px;
+        }
+
+        .gallery-counter {
+            text-align: center;
+            margin-top: 1.5rem;
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #0288d1;
+        }
+
+        .contact {
+            background: linear-gradient(135deg, #e1f5fe 0%, #fff9c4 100%);
+        }
+
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        .contact-info h2 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #00bcd4, #0288d1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 900;
+        }
+
+        .contact-subtitle {
+            font-size: 1.2rem;
+            color: #546e7a;
+            margin-bottom: 3rem;
+        }
+
+        .contact-details {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1.5rem;
+            padding: 1.5rem;
+            background: white;
+            border-radius: 20px;
+            transition: all 0.3s;
+            border: 2px solid rgba(0, 188, 212, 0.2);
+            box-shadow: 0 5px 20px rgba(0, 188, 212, 0.1);
+        }
+
+        .contact-item:hover {
+            transform: translateX(10px);
+            box-shadow: 0 10px 30px rgba(0, 188, 212, 0.3);
+        }
+
+        .contact-icon {
+            font-size: 2rem;
+        }
+
+        .contact-item h4 {
+            font-size: 1.2rem;
+            color: #0288d1;
+            margin-bottom: 0.3rem;
+            font-weight: 700;
+        }
+
+        .contact-item a {
+            color: #00bcd4;
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        .contact-item a:hover {
+            color: #0288d1;
+        }
+
+        .contact-item p {
+            color: #546e7a;
+            line-height: 1.6;
+            font-size: 1.05rem;
+        }
+
+        .business-hours {
+            background: linear-gradient(135deg, #00bcd4 0%, #0288d1 100%);
+            padding: 2rem;
+            border-radius: 20px;
+            color: white;
+            box-shadow: 0 10px 40px rgba(0, 188, 212, 0.4);
+        }
+
+        .business-hours h4 {
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            font-weight: 800;
+        }
+
+        .business-hours p {
+            margin-bottom: 0.5rem;
+            font-size: 1.05rem;
+        }
+
+        .social-links {
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 2px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .social-button {
+            display: inline-block;
+            background: white;
+            color: #0288d1;
+            padding: 0.8rem 1.8rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1rem;
+            transition: all 0.3s;
+        }
+
+        .social-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .map-container {
+            height: 500px;
+            border-radius: 30px;
+            overflow: hidden;
+            box-shadow: 0 15px 50px rgba(0, 188, 212, 0.3);
+            border: 5px solid white;
+        }
+
+        footer {
+            background: linear-gradient(135deg, #0288d1 0%, #01579b 100%);
+            color: white;
+            padding: 3rem 2rem 1.5rem;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto 1.5rem;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+
+        .footer-brand h3 {
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+            letter-spacing: 2px;
+            font-weight: 900;
+        }
+
+        .footer-brand p {
+            color: #b3e5fc;
+            font-size: 1rem;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s;
+            font-weight: 600;
+        }
+
+        .footer-links a:hover {
+            color: #ffeb3b;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 1.5rem;
+            border-top: 2px solid rgba(255, 255, 255, 0.2);
+            color: #b3e5fc;
+        }
+
+        @media (max-width: 968px) {
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 3rem;
+            }
+            
+            .section-header h2 {
+                font-size: 2.5rem;
+            }
+
+            .product-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="bubbles">
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+    </div>
+
+    <div class="droplets">
+        <div class="droplet"></div>
+        <div class="droplet"></div>
+        <div class="droplet"></div>
+    </div>
+
+    <header>
+        <nav>
+            <div class="logo">EDEN JELLY</div>
+            <ul class="nav-links">
+                <li><a href="#home" class="nav-link active">Home</a></li>
+                <li><a href="#products" class="nav-link">Products</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="home" class="hero">
+            <div class="hero-content">
+                <h1>EDEN JELLY</h1>
+                <div class="rwanda-badge">Proudly Rwanda !</div>
+                <p>Pure, Quality Vaseline for Your Skin Care Needs</p>
+                <div class="hero-features">
+                    <div class="feature-item">
+                        <span class="feature-icon">💧</span>
+                        <span>100% Pure</span>
+                    </div>
+                    <div class="feature-item">
+                        <span class="feature-icon">✨</span>
+                        <span>Dermatologist Tested</span>
+                    </div>
+                    <div class="feature-item">
+                        <span class="feature-icon">🌟</span>
+                        <span>Long Lasting</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="products" class="products">
+            <div class="section-header">
+                <h2>Our Premium Products</h2>
+                <p class="section-subtitle">Quality vaseline for every skin care need</p>
+            </div>
+            
+            <div class="product-grid">
+                <div class="product-card">
+                    <div class="product-icon">🧴</div>
+                    <h3>Original Vaseline</h3>
+                    <p>Our classic formula for everyday skin protection and deep moisturizing. Perfect for all skin types.</p>
+                    <div class="product-benefits">
+                        <span>💧 Deep Moisturizing</span>
+                        <span>🛡️ Skin Protection</span>
+                        <span>✨ All-Purpose</span>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-icon">💧</div>
+                    <h3>Healing Jelly</h3>
+                    <p>Extra nourishing formula for dry, cracked, and sensitive skin. Provides intensive care and healing.</p>
+                    <div class="product-benefits">
+                        <span>🌿 Intensive Care</span>
+                        <span>⚡ Fast Healing</span>
+                        <span>💖 Extra Nourishing</span>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-icon">💋</div>
+                    <h3>Lip Care</h3>
+                    <p>Specially formulated to keep your lips soft, smooth, and perfectly hydrated throughout the day.</p>
+                    <div class="product-benefits">
+                        <span>💋 Soft & Smooth</span>
+                        <span>🌟 Long Lasting</span>
+                        <span>🛡️ Protective</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="gallery-section">
+                <div class="section-header">
+                    <h2>Product Gallery</h2>
+                    <p class="section-subtitle">Browse our collection</p>
+                </div>
+
+                <div class="gallery-container">
+                    <div class="gallery-slider">
+                        <!-- FIXED: only one .gallery-track -->
+                        <div class="gallery-track" id="galleryTrack">
+                            <div class="gallery-slide"><img src="./PHOTOS/photo2.jpg" alt="Product 1"></div>
+                            <div class="gallery-slide"><img src="./PHOTOS/photo4.jpg" alt="Product 3"></div>
+                            <div class="gallery-slide"><img src="./PHOTOS/photo5.jpg" alt="Product 4"></div>
+                            <div class="gallery-slide"><img src="./PHOTOS/photo6.jpg" alt="Product 5"></div>
+                            <div class="gallery-slide"><img src="./PHOTOS/photo3.jpg" alt="Product 2"></div>
+                            <!-- Add more slides as needed -->
+                        </div>
+
+                        <!-- Navigation arrows -->
+                        <div class="gallery-nav">
+                            <div class="gallery-arrow" id="prevBtn">‹</div>
+                            <div class="gallery-arrow" id="nextBtn">›</div>
+                        </div>
+                    </div>
+
+                    <!-- Dots and counter -->
+                    <div class="gallery-dots" id="galleryDots"></div>
+                    <div class="gallery-counter" id="galleryCounter">1 / 10</div>
+                </div>
+            </div>
+
+        </section>
+
+        <section id="contact" class="contact">
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h2>Get In Touch</h2>
+                    <p class="contact-subtitle">Visit us or reach out for orders and inquiries</p>
+                    
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <div class="contact-icon">📞</div>
+                            <div>
+                                <h4>Phone</h4>
+                                <a href="tel:+250788312189">+250 788 312 189</a>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <div class="contact-icon">📧</div>
+                            <div>
+                                <h4>Email</h4>
+                                <a href="mailto:hersengoga@gmail.com">hersengoga@gmail.com</a>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <div class="contact-icon">📍</div>
+                            <div>
+                                <h4>Location</h4>
+                                <p>Murindi, Kigali<br>Rwanda 🇷🇼</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="business-hours">
+                        <h4>Business Hours</h4>
+                        <p>Monday - Friday: 9:00 AM - 6:00 PM</p>
+                        <p>Saturday: 10:00 AM - 4:00 PM</p>
+                        <p>Sunday: Closed</p>
+                        <div class="social-links">
+                            <a href="https://www.facebook.com/p/Eden-Jelly-100078012300831/" target="_blank" class="social-button">
+                                📘 Visit our Facebook
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="map-container">
+                        <iframe 
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d127641.82290092043!2d30.059389!3d-1.9440727!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x19dca4258ed8e797%3A0xe74f4a2e9c43cb!2sKigali%2C%20Rwanda!5e0!3m2!1sen!2sus!4v1234567890" 
+                            width="100%" 
+                            height="100%" 
+                            style="border:0;" 
+                            allowfullscreen="" 
+                            loading="lazy">
+                        </iframe>
+                    </div>
+                </div> <!-- /.contact-container -->
+            </section> <!-- /#contact -->
+        </main>
+
+        <footer>
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <h3>EDEN JELLY</h3>
+                    <p>Premium Vaseline Products — Proudly Rwanda</p>
+                </div>
+                <div class="footer-links">
+                    <a href="#home">Home</a>
+                    <a href="#products">Products</a>
+                    <a href="#contact">Contact</a>
+                </div>
+            </div>
+            <div class="copyright">© <span id="year"></span> EDEN JELLY. All rights reserved.</div>
+        </footer>
+
+    <script>
+    // full slideshow + small fixes
+    document.addEventListener('DOMContentLoaded', () => {
+        // footer year
+        const yearEl = document.getElementById('year');
+        if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+        const galleryTrack = document.getElementById('galleryTrack');
+        const dotsContainer = document.getElementById('galleryDots');
+        const counter = document.getElementById('galleryCounter');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        const slider = document.querySelector('.gallery-slider');
+
+        if (!galleryTrack) return;
+        const slides = Array.from(galleryTrack.querySelectorAll('.gallery-slide'));
+        const total = slides.length || 0;
+        let current = 0;
+        let autoInterval = null;
+
+        // ensure slides/layout are correct (use full width)
+        function updateTrack() {
+            galleryTrack.style.transform = `translateX(-${current * 100}%)`;
+        }
+
+        // create dots
+        function createDots() {
+            if (!dotsContainer) return;
+            dotsContainer.innerHTML = '';
+            slides.forEach((_, i) => {
+                const btn = document.createElement('button');
+                btn.type = 'button';
+                btn.className = 'gallery-dot' + (i === 0 ? ' active' : '');
+                btn.setAttribute('aria-label', `Go to slide ${i + 1}`);
+                btn.addEventListener('click', () => goTo(i));
+                dotsContainer.appendChild(btn);
+            });
+        }
+
+        function updateUI() {
+            updateTrack();
+            if (dotsContainer) {
+                const dots = Array.from(dotsContainer.children);
+                dots.forEach((d, i) => d.classList.toggle('active', i === current));
+            }
+            if (counter) counter.textContent = `${current + 1} / ${total || 1}`;
+        }
+
+        function nextSlide() {
+            if (total === 0) return;
+            current = (current + 1) % total;
+            updateUI();
+        }
+
+        function prevSlide() {
+            if (total === 0) return;
+            current = (current - 1 + total) % total;
+            updateUI();
+        }
+
+        function goTo(index) {
+            if (index < 0 || index >= total) return;
+            current = index;
+            updateUI();
+        }
+
+        // wire buttons
+        if (nextBtn) nextBtn.addEventListener('click', nextSlide);
+        if (prevBtn) prevBtn.addEventListener('click', prevSlide);
+
+        // keyboard activation for arrow elements (Enter / Space)
+        [prevBtn, nextBtn].forEach(el => {
+            if (!el) return;
+            el.setAttribute('role', 'button');
+            el.setAttribute('tabindex', '0');
+            el.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    el === prevBtn ? prevSlide() : nextSlide();
+                }
+            });
+        });
+
+        // autoplay with pause on hover/focus
+        function startAuto() {
+            stopAuto();
+            autoInterval = setInterval(nextSlide, 5000);
+        }
+        function stopAuto() {
+            if (autoInterval) { clearInterval(autoInterval); autoInterval = null; }
+        }
+        if (slider) {
+            slider.addEventListener('mouseenter', stopAuto);
+            slider.addEventListener('mouseleave', startAuto);
+            slider.addEventListener('focusin', stopAuto);
+            slider.addEventListener('focusout', startAuto);
+        }
+
+        // basic touch support (swipe)
+        let touchStartX = null;
+        galleryTrack.addEventListener('touchstart', (e) => {
+            touchStartX = e.touches[0].clientX;
+        }, { passive: true });
+        galleryTrack.addEventListener('touchend', (e) => {
+            if (touchStartX === null) return;
+            const endX = e.changedTouches[0].clientX;
+            const diff = touchStartX - endX;
+            if (Math.abs(diff) > 50) {
+                if (diff > 0) nextSlide();
+                else prevSlide();
+            }
+            touchStartX = null;
+        });
+
+        // images may shift layout while loading — ensure correct initial sizing after load
+        window.addEventListener('load', () => {
+            createDots();
+            updateUI();
+            startAuto();
+            // small extra calls to ensure transform applied after images settle
+            setTimeout(updateUI, 50);
+            setTimeout(updateUI, 300);
+        });
+
+        // fallback init if load already fired
+        if (document.readyState === 'complete') {
+            createDots();
+            updateUI();
+            startAuto();
+        }
+    });
+    </script>
+</body>
+</html>
